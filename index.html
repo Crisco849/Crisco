@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Messenger</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/chat.css" />
+</head>
+<body>
+    <div id="chat-container">
+
+    </div>
+    
+    <!--
+    <input type="text" id="userinput">
+    <button class="btn-green" onclick="sendMessage(); writeToIframe();" id="{{ data }}">Send</button>
+    <br />
+    <iframe id="iframe"></iframe>
+    -->
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <script>
+        /*
+        const $events = document.getElementById('events');
+
+        const newItem = (content) => {
+            const item = document.createElement('li');
+            item.innerText = content;
+            return item;
+        };*/
+
+        /* receive data from server
+        const socket = io();
+        socket.on('connect', () => {
+            $events.appendChild(newItem('connect'));
+        });
+        socket.on('hello', (counter) => {
+            $events.appendChild(newItem(`hello - ${counter}`));
+        }); */
+
+
+        /* Send a message from client to server
+        socket.on('connect', () => {
+            $events.appendChild(newItem('connect'));
+        });
+
+        let counter = 0;
+        setInterval(() => {
+            ++counter;
+            socket.emit('hey', { counter }); // the object will be serialized for you
+        }, 1000);
+        */
+
+        // get form data, store it in a string, and send to server.
+        //var doc = iframe.contentDocument;
+
+        function writeToIframe() {
+            doc.open();
+            doc.write(document.getElementById('userinput').value + '\n');
+            doc.close();
+        }
+
+
+
+
+        function sendMessage() {
+            const socket = io();
+
+
+            var message = document.getElementById('userinput').value;
+            socket.emit('message', { message }); // the object will be serialized for you
+        }
+    </script>
+</body>
+</html>
